@@ -1,0 +1,16 @@
+{
+  "name": "dbsfw-api",
+  "version": "0.0.1",
+  "description": "Api to fetch new dragonball super fusion world cards and build decks with them.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "author": "MarcoPasta",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^3.0.3"
+  }
+}
