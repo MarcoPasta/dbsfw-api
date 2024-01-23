@@ -3,14 +3,13 @@ version: '3'
 services:
   api:
     build:
-      context: ./api
+      context: .
     depends_on:
       - mysql
     ports:
       - 3000:3000
     volumes:
-      - ./api:/app/
-      # - /home/node/app/api/node_modules
+      - .:/app/
     command: npm run dev
 
   mysql:
@@ -20,7 +19,7 @@ services:
     env_file: .env
     environment:
       MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
-      MYSQL_ROOT_HOST: "%" 
+      MYSQL_ROOT_HOST: "%"
       MYSQL_DATABASE: '${MYSQL_DATABASE}'
       MYSQL_USER: '${MYSQL_USER}'
       MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
@@ -28,7 +27,13 @@ services:
       - mysql:/var/lib/mysql
     # wichtig
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-p${MYSQL_ROOT_PASSWORD}"]
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-p${MYSQL_ROOT_PASSWORD}"
+        ]
       retries: 3
       timeout: 5s
 
@@ -36,7 +41,7 @@ services:
     image: adminer
     ports:
       - 8080:8080
-    
-volumes: 
+
+volumes:
   mysql:
     driver: local
