@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Api to fetch new dragonball super fusion world cards and build decks with them.",
   "main": "src/app.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon src/app.js",
     "start": "node src/app.js"
