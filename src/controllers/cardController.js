@@ -1,9 +1,9 @@
-import { Card } from '../models/cardModel.js'
+import prisma from '../models/cardModel.js'
 
 // Hier werden wohl die DB Zugriffe gemacht
 const getAllCards = async (req, res) => {
     try {
-        const cards = await Card.findMany()
+        const cards = await prisma.card.findMany()
         res.json(cards)
     } catch (error) {
         console.error(error)

@@ -1,9 +1,5 @@
-import prisma from '../prisma/client.js'
+// src/models/cardModel.js
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
 
-// Importiert den PrismaClient und erstellt ein PrismaModell aus
-// dem DB Modell
-
-const Card = prisma.card
-
-export { Card }
-
+export default prisma; // Direkt card exportieren
