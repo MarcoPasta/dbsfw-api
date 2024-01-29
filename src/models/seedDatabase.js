@@ -7,7 +7,7 @@ const mockCards = [
     color: "red",
     number: "ST01-001",
     type: "Leader",
-    image: "/workspaces/dbsfw-api/public/images/red.png",
+    image: "http://localhost:3000/images/red.png",
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const mockCards = [
     color: "green",
     number: "ST02-001",
     type: "Leader",
-    image: "/workspaces/dbsfw-api/public/images/green.png",
+    image: "http://localhost:3000/images/green.png",
   },
   {
     id: 3,
@@ -23,7 +23,7 @@ const mockCards = [
     color: "blue",
     number: "ST03-001",
     type: "Leader",
-    image: "/workspaces/dbsfw-api/public/images/blue.png",
+    image: "http://localhost:3000/images/blue.png",
   },
   {
     id: 4,
@@ -31,7 +31,7 @@ const mockCards = [
     color: "yellow",
     number: "ST07-001",
     type: "Leader",
-    image: "/workspaces/dbsfw-api/public/images/yellow.png",
+    image: "http://localhost:3000/images/yellow.png",
   },
 ];
 
