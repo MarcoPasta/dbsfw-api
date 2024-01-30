@@ -20,7 +20,7 @@ router.get("/cards/red", getRedCards);
 router.get("/cards/blue", getBlueCards);
 
 // // Only request green cards
-router.get("/cards/gree", getGreenCards);
+router.get("/cards/green", getGreenCards);
 
 // // Only request yellow cards
 router.get("/cards/yellow", getYellowCards);

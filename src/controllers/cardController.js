@@ -2,6 +2,9 @@ import prisma from "../models/cardModel.js";
 
 // Retrieve data from DB using prisma
 const getAllCards = async (req, res) => {
+  // res.header("Access-Control-Allow-Origin: *")
+  // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
   try {
     const cards = await prisma.card.findMany();
     res.json(cards);
