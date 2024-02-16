@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
 }
 
 datasource db {
@@ -14,13 +15,13 @@ model Card {
   number String  @db.VarChar(255)
   type   String  @db.VarChar(255)
   image  String  @db.VarChar(255)
-  decks  Deck[]
+  // decks  Deck[]
 }
 
-model Deck {
-  id Int @id @default(autoincrement())
-  color String
-  leader String 
-  name String
-  cards Card[]
-}
+// model Deck {
+//   id Int @id @default(autoincrement())
+//   color String
+//   leader String 
+//   name String
+//   cards Card[]
+// }
