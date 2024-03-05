@@ -1,27 +1,40 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
 }
 
 datasource db {
-  provider          = "mysql"
-  url               = env("DATABASE_URL")
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 model Card {
-  id     Int     @id @default(autoincrement())
-  name   String  @db.VarChar(255)
-  color  String  @db.VarChar(255)
-  number String  @db.VarChar(255)
-  type   String  @db.VarChar(255)
-  image  String  @db.VarChar(255)
-  // decks  Deck[]
+  id     Int    @id @default(autoincrement())
+  name   String @db.VarChar(255)
+  color  String @db.VarChar(255)
+  number String @db.VarChar(255)
+  type   String @db.VarChar(255)
+  image  String @db.VarChar(255)
+
+  decks  DecksOnCards[]
 }
 
-// model Deck {
-//   id Int @id @default(autoincrement())
-//   color String
-//   leader String 
-//   name String
-//   cards Card[]
-// }
+model Deck {
+  id       Int      @id @default(autoincrement())
+  color    String
+  leader   String
+  name     String
+  timespan DateTime @default(now())
+
+  cards DecksOnCards[]
+}
+
+model DecksOnCards {
+  id Int @id @default(autoincrement())
+  card   Card @relation(fields: [cardId], references: [id])
+  cardId Int
+  deck   Deck? @relation(fields: [deckId], references: [id])
+  deckId Int?
+
+  // @@id([cardId, deckId])
+}

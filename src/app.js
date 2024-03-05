@@ -8,7 +8,7 @@ const app = express();
 const port = 3000;
 const path = "/app";
 
-// Erlaubt alle CORS Anfragen
+// Allows all CORS requests
 app.use(cors())
 
 app.use(function(req, res, next) {
@@ -18,13 +18,11 @@ app.use(function(req, res, next) {
   next();
 });
 
-// macht den Pfad '/app/public' statisch, somit kann man auch ohne deren
-// Angabe darauf zugreifen.
-// Zugriff auf Karte mit bsp. localhost:3000/images/blue.png
+// Creates a static path '/app/public' for easier access. Example: localhost:3000/images/blue.png
 app.use(express.static(join(path, "public")));
 
 
-// Middleware welche das parsen von JSON Requests ermöglicht
+// Middleware to allow JSON parsing
 app.use(express.json());
 app.use("/api", cardRouter);
 

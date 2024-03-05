@@ -1,5 +1,10 @@
 import prisma from "./cardModel.js";
 
+/////////////////////////////////////////////////////////////////////////
+//
+// Card SEED
+//
+
 const seedCards = [
   {
     name: "Son Goku",
@@ -1443,7 +1448,6 @@ async function main() {
 }
 
 main();
-
 
 /**
  *  Example Starter Deck List
