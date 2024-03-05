@@ -1,11 +1,3 @@
-import prisma from "./cardModel.js";
-import { getAllCards } from "../controllers/cardController.js";
-
-/////////////////////////////////////////////////////////////////////////
-//
-// DECK SEED
-//
-
 const seedDeck = [
   {
     id: 1,
@@ -417,37 +409,4 @@ const seedDeck = [
   },
 ];
 
-async function seedDatabase() {
-  await prisma.deck.create({
-    data: {
-      name: "Testdeck",
-      color: seedDeck[0].color,
-      leader: seedDeck[0].name,
-      cards: {
-        create: seedDeck.map((card) => {
-          return {
-            card: {
-              connect: { id: card.id },
-            },
-          };
-        }),
-      },
-    },
-    include: {
-      cards: true,
-    },
-  });
-}
-
-async function main() {
-  try {
-    await seedDatabase();
-    console.log("seeding completed successfully!");
-  } catch (error) {
-    console.error(error);
-  } finally {
-    await prisma.$disconnect();
-  }
-}
-
-main();
+export default seedDeck;
