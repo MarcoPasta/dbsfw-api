@@ -2,6 +2,7 @@ import prisma from "./cardModel.js";
 
 async function dropDatabase() {
   await prisma.card.deleteMany();
+  await prisma.$queryRaw`ALTER TABLE Card AUTO_INCREMENT = 1`;
 }
 
 async function main() {

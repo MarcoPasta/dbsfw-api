@@ -424,13 +424,13 @@ async function seedDatabase() {
       color: seedDeck[0].color,
       leader: seedDeck[0].name,
       cards: {
-        create: [
-          {
+        create: seedDeck.map((card) => {
+          return {
             card: {
-              connect: { id },
+              connect: { id: card.id },
             },
-          },
-        ],
+          };
+        }),
       },
     },
     include: {
