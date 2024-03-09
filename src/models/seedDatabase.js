@@ -35,8 +35,8 @@ async function main() {
     console.log("seeding Database...");
     console.log("seeding cards...");
     await seedDatabase();
-    console.log("seeding decks...");
-    await seedDeck();
+    // console.log("seeding decks...");
+    // await seedDeck();
     console.log("seeding completed successfully!");
   } catch (error) {
     console.error(error);
