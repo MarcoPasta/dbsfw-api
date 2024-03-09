@@ -1,4 +1,4 @@
-const cardSeed = [
+export const cardSeed = [
   {
     name: "Son Goku",
     color: "red",

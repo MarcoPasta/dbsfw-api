@@ -1,4 +1,4 @@
-const seedDeck = [
+export const deckSeed = [
   {
     id: 1,
     name: "Son Goku",
@@ -409,4 +409,4 @@ const seedDeck = [
   },
 ];
 
-export default seedDeck;
+export default deckSeed;
