@@ -73,15 +73,16 @@ const getYellowCards = async (req, res) => {
 
 // save a deck to the DB
 const saveDeckToDB = async (req, res) => {
-  console.log("Request: ", req);
+  console.log("Request: ", req.body);
+  // req.body contains the sent data
   try {
     await prisma.deck.create({
       data: {
-        name: req.name,
-        color: req.deck[0].color,
-        leader: req.deck[0].name,
+        name: req.body.name,
+        color: req.body.deck[0].color,
+        leader: req.body.deck[0].name,
         cards: {
-          create: req.deck.map((card) => {
+          create: req.body.deck.map((card) => {
             return {
               card: {
                 connect: { id: card.id },
@@ -100,12 +101,6 @@ const saveDeckToDB = async (req, res) => {
     res.status(500).send("POST REQUEST FAILED");
   }
 };
-
-/**
- * request:
- *  - name:
- *  - deck:
- */
 
 export {
   getAllCards,
