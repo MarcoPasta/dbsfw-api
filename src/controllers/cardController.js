@@ -73,8 +73,6 @@ const getYellowCards = async (req, res) => {
 
 // save a deck to the DB
 const saveDeckToDB = async (req, res) => {
-  console.log("Request: ", req.body);
-  // req.body contains the sent data
   try {
     await prisma.deck.create({
       data: {
@@ -95,10 +93,28 @@ const saveDeckToDB = async (req, res) => {
         cards: true,
       },
     });
-    res.send("success");
+    res.status(201).send("Created: Deck was stored successfully");
   } catch (error) {
     console.error(error);
-    res.status(500).send("POST REQUEST FAILED");
+    res
+      .status(422)
+      .send("Unprocessable Content: Kp was ich hier noch rienpacken kann");
+  }
+};
+
+const deleteDeckfromDB = async (req, res) => {
+  console.log(Number(req.params.id));
+  // req braucht hier eigentlich nur die ID von dem Deck was gelöscht werden soll
+  try {
+    await prisma.deck.delete({
+      where: {
+        id: Number(req.params.id),
+      },
+    });
+    res.status(200).send("OK: Deck deleted successfully");
+  } catch (error) {
+    console.error(error);
+    res.send("Could not be deleted");
   }
 };
 
@@ -109,4 +125,5 @@ export {
   getGreenCards,
   getYellowCards,
   saveDeckToDB,
+  deleteDeckfromDB,
 };

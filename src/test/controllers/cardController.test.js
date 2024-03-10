@@ -4,6 +4,7 @@ import { cardSeed } from "../../data/seeds/cards.js";
 import { deckSeed } from "../../data/seeds/decks.js";
 import { app } from "../../app.js";
 import { mock } from "vitest-mock-extended";
+import prisma from "../../models/cardModel.js";
 
 // Setup
 const request = require("supertest");
@@ -38,13 +39,22 @@ test("GET /api/cards", async () => {
 });
 
 // Test POST routes
-test("POST /api/cards/save", async (req, res) => {
+test("POST /api/cards/save", async () => {
   const testReq = {
     name: "Integration Test",
     deck: deckSeed,
   };
 
   const testRes = await request(app).post("/api/cards/save").send(testReq);
-
   console.debug(testRes.text);
+  expect(testRes.status).toEqual(201);
+});
+
+// Test DELETE routes
+test("DELETE /api/decks/:id", async () => {
+  const testReq = {
+    id: 7,
+  };
+  const testRes = await request(app).delete(`/api/decks/${testReq.id}`);
+  expect(testRes.status).toEqual(200);
 });

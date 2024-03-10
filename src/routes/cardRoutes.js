@@ -6,11 +6,12 @@ import {
   getGreenCards,
   getYellowCards,
   saveDeckToDB,
+  deleteDeckfromDB,
 } from "../controllers/cardController.js";
 
 const router = express.Router();
 
-// GET routes
+///// GET routes /////
 // Request all cards
 router.get("/cards", getAllCards);
 
@@ -26,8 +27,11 @@ router.get("/cards/green", getGreenCards);
 // Only request yellow cards
 router.get("/cards/yellow", getYellowCards);
 
-// POST routes
+///// POST routes /////
 // Save a deck to the DB
 router.post("/cards/save", saveDeckToDB);
+
+///// DELETE routes /////
+router.delete("/decks/:id", deleteDeckfromDB);
 
 export default router;
