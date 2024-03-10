@@ -11,6 +11,16 @@ const getAllCards = async (req, res) => {
   }
 };
 
+const getAllDecks = async (req, res) => {
+  try {
+    const cards = await prisma.deck.findMany();
+    res.json(cards);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 // Retrieve all red cards from DB
 const getRedCards = async (req, res) => {
   try {
@@ -120,6 +130,7 @@ const deleteDeckfromDB = async (req, res) => {
 
 export {
   getAllCards,
+  getAllDecks,
   getRedCards,
   getBlueCards,
   getGreenCards,

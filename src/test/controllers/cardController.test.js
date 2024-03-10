@@ -38,6 +38,12 @@ test("GET /api/cards", async () => {
   expect(res.body).toEqual(mockCards);
 });
 
+test("GET /api/decks", async () => {
+  const res = await request(app).get("/api/decks");
+
+  expect(res.statusCode).toEqual(200);
+});
+
 // Test POST routes
 test("POST /api/cards/save", async () => {
   const testReq = {

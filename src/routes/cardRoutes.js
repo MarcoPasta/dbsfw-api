@@ -7,6 +7,7 @@ import {
   getYellowCards,
   saveDeckToDB,
   deleteDeckfromDB,
+  getAllDecks,
 } from "../controllers/cardController.js";
 
 const router = express.Router();
@@ -14,6 +15,9 @@ const router = express.Router();
 ///// GET routes /////
 // Request all cards
 router.get("/cards", getAllCards);
+
+// Request all decks
+router.get("/decks", getAllDecks);
 
 // Only request red cards
 router.get("/cards/red", getRedCards);
