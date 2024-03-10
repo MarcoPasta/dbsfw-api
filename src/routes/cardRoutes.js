@@ -5,24 +5,37 @@ import {
   getBlueCards,
   getGreenCards,
   getYellowCards,
+  saveDeckToDB,
+  deleteDeckfromDB,
+  getAllDecks,
 } from "../controllers/cardController.js";
 
 const router = express.Router();
 
-// GET routes
+///// GET routes /////
 // Request all cards
 router.get("/cards", getAllCards);
+
+// Request all decks
+router.get("/decks", getAllDecks);
 
 // Only request red cards
 router.get("/cards/red", getRedCards);
 
-// // Only request blue cards
+// Only request blue cards
 router.get("/cards/blue", getBlueCards);
 
-// // Only request green cards
+// Only request green cards
 router.get("/cards/green", getGreenCards);
 
-// // Only request yellow cards
+// Only request yellow cards
 router.get("/cards/yellow", getYellowCards);
+
+///// POST routes /////
+// Save a deck to the DB
+router.post("/cards/save", saveDeckToDB);
+
+///// DELETE routes /////
+router.delete("/decks/:id", deleteDeckfromDB);
 
 export default router;
